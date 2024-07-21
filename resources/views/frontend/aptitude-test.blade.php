@@ -7,7 +7,7 @@
     <title>TestZen</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('TestZen.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="images/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="images/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="images/apple-touch-icon-114x114-precomposed.png">
@@ -62,7 +62,7 @@
 
 	<header>
         <div class="container-fluid">
-            <a href="index.html"><img src="{{asset('pbl-logo.svg')}}" alt="" width="300" height="60" class="d-none d-md-inline"><img src="{{asset('pbl-logo.svg')}}" alt="" width="250" height="200" class="d-inline d-md-none"></a>
+            <a href="index.html"><img src="{{asset('TestZen-lg.png')}}" alt="" width="300" height="60" class="d-none d-md-inline"><img src="{{asset('TestZen-sm.png')}}" alt="" width="250" height="200" class="d-inline d-md-none"></a>
             <h1>Aptitude Test</h1>
             <!-- /top_elements -->
         </div>

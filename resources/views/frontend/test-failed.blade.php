@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Failed</title>
+    <link rel="shortcut icon" href="{{asset('TestZen.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="/path/to/your/css/styles.css">
     <style>
         /* You can add some basic styles here */

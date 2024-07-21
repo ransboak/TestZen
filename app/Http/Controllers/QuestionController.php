@@ -21,6 +21,9 @@ class QuestionController extends Controller
         if (in_array($request->input('question_type'), ['multiple_choice', 'multiple_selection'])) {
             $request->validate([
                 'options' => 'array|min:2',
+            ],[
+                'options.min' => 'There must be at least 2 options',
+                'options.array' => 'Invalid input'
             ]);
         }
 

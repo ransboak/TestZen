@@ -882,8 +882,8 @@ body.layout_2 {
 .layout_2 header {
     padding: 60px 0;
     text-align: center;
-    background: #5296cf url(../images/blue-print.jpg) center right;
-    background: linear-gradient(rgba(82, 150, 207, 0.8), rgba(82, 150, 207, 0.8)), url(../images/blue-print.jpg);
+    /* background: #5296cf url(../images/blue-print.jpg) center right; */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/blue-print.jpg);
     position: relative;
 }
 @media (max-width: 767px) {

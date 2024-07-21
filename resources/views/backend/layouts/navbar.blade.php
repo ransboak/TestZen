@@ -235,24 +235,24 @@
     <!-- LOGO -->
     <div class="logo-box">
         <a href="index.html" class="logo text-center logo-dark">
-            <span class="logo-lg">
-                <img src="{{asset('backend/assets/images/logo.png')}}" alt="" height="22">
+            <span class="logo-lg mt-2">
+                <img src="{{asset('TestZen-lg.png')}}" alt="" height="70">
                 <!-- <span class="logo-lg-text-dark">Uplon</span> -->
             </span>
             <span class="logo-sm">
                 <!-- <span class="logo-lg-text-dark">U</span> -->
-                <img src="{{asset('backend/assets/images/logo-sm.png')}}" alt="" height="24">
+                <img src="{{asset('TestZen-sm.png')}}" alt="" height="50">
             </span>
         </a>
 
         <a href="index.html" class="logo text-center logo-light">
             <span class="logo-lg">
-                <img src="{{asset('backend/assets/images/logo-light.png')}}" alt="" height="22">
+                <img src="{{asset('TestZen-lg.png')}}" alt="" height="22">
                 <!-- <span class="logo-lg-text-dark">Uplon</span> -->
             </span>
             <span class="logo-sm">
                 <!-- <span class="logo-lg-text-dark">U</span> -->
-                <img src="{{asset('backend/assets/images/logo-sm-light.png')}}" alt="" height="24">
+                <img src="{{asset('TestZen-sm.png')}}" alt="" height="24">
             </span>
         </a>
     </div>

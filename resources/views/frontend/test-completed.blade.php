@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Completed</title>
+    <link rel="shortcut icon" href="{{asset('TestZen.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="/path/to/your/css/styles.css">
     <style>
         /* You can add some basic styles here */
@@ -34,7 +35,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="{{asset('pbl-logo.svg')}}" alt="" width="184" height="55" class="d-none d-md-inline">
+        <img src="{{asset('TestZen-lg.png')}}" alt="" height="85" style="width: 14rem; height:6rem" class="d-none d-md-inline">
         <p>Thank you for completing the test. We will get back to you shortly after we finish compiling the results.</p>
     </div>
 </body>
