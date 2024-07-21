@@ -10,12 +10,19 @@ class QuestionController extends Controller
 {
     //
     public function addQuestion(Request $request){
+        // return $request->options;
         $request->validate([
             'question' => 'required|string',
-            'question_type' => 'required|string|in:multiple_choice,multiple_selection,text',
-            'options' => 'nullable|array',
-            'options.*' => 'nullable|string',
+        'question_type' => 'required|string|in:multiple_choice,multiple_selection,text',
+        'options' => 'required_if:question_type,multiple_choice,multiple_selection|array',
+        'options.*' => 'nullable|string',
         ]);
+
+        if (in_array($request->input('question_type'), ['multiple_choice', 'multiple_selection'])) {
+            $request->validate([
+                'options' => 'array|min:2',
+            ]);
+        }
 
         $question = Question::create([
             'question' => $request->input('question'),

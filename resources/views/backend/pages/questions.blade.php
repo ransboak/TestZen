@@ -151,16 +151,16 @@
                         <div class="form-group">
                             <label for="questionType">Question Type</label>
                             <select class="form-control" id="questionType" name="question_type">
-                                <option value="text">Text</option>
-                                <option value="multiple_choice">Multi Choice</option>
-                                <option value="multiple_selection">Multi Selection</option>
+                                <option value="text" {{old('question_type') == 'text' ? 'selected' : ''}}>Text</option>
+                                <option value="multiple_choice" {{old('question_type') == 'multiple_choice' ? 'selected' : ''}}>Multi Choice</option>
+                                <option value="multiple_selection" {{old('question_type') == 'multiple_selection' ? 'selected' : ''}}>Multi Selection</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Question</label>
                             <div>
-                                <textarea name="question" required class="form-control" rows="3"></textarea>
+                                <textarea name="question" required class="form-control" rows="3">{{old('question')}}</textarea>
                             </div>
                         </div>
 
@@ -169,7 +169,7 @@
                             <div class="form-group option-field">
                                 <label>Option</label>
                                 <div class="input-group">
-                                    <input type="text" name="options[]" class="form-control" required>
+                                    <input type="text" name="options[]" class="form-control">
                                     <button type="button" class="btn btn-danger delete-option">Delete</button>
                                 </div>
                             </div>
@@ -196,7 +196,7 @@
             // Function to show or hide options based on question type
             function updateOptions() {
                 const selectedType = questionTypeSelect.value;
-                if (selectedType === 'multi-choice' || selectedType === 'multi-selection') {
+                if (selectedType === 'multiple_choice' || selectedType === 'multiple_selection') {
                     optionsContainer.style.display = 'block';
                 } else {
                     optionsContainer.style.display = 'none';
