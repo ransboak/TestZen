@@ -289,6 +289,7 @@
                     </form> --}}
                     <form id="wrapped" method="POST" action="{{ route('test.submit') }}">
                         @csrf
+                        <input id="website" name="website" type="text" value="">
                         <div id="middle-wizard">
                             @foreach($questions as $question)
                                 <div class="step">
@@ -472,7 +473,7 @@
             const serverTime = new Date("{{ now() }}").getTime();
             const clientTime = new Date().getTime();
             const offset = serverTime - clientTime;
-            const duration = 0.8 * 60 * 1000; // 30 minutes in milliseconds
+            const duration = 3 * 60 * 1000; // 30 minutes in milliseconds
 
             function checkAndSubmitForm() {
                 const adjustedClientTime = new Date().getTime() + offset;

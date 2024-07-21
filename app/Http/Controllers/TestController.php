@@ -15,22 +15,18 @@ class TestController extends Controller
     {
         $user = Auth::user();
 
-        // Check if the user has already taken the test
         if ($user->test && $user->test->end_time) {
             return redirect()->route('test.result');
         }
 
-        // Create a new test entry if it doesn't exist
         if (!$user->test) {
-            $test = Test::create([
-                'user_id' => $user->id,
-                'start_time' => now(),
-            ]);
+            $test = $user->test()->create(['start_time' => now()]);
         } else {
             $test = $user->test;
         }
 
-        // Fetch questions and shuffle them
+
+
         $questions = Question::with('options')->inRandomOrder()->get();
 
         return view('frontend.aptitude-test', compact('test', 'questions'));
@@ -46,8 +42,7 @@ class TestController extends Controller
         }
 
         foreach ($request->answers as $question_id => $answer) {
-            Answer::create([
-                'test_id' => $test->id,
+            $test->answers()->create([
                 'question_id' => $question_id,
                 'answer' => is_array($answer) ? json_encode($answer) : $answer,
             ]);
@@ -65,10 +60,8 @@ class TestController extends Controller
 
         if (!$test || !$test->end_time) {
             return redirect()->route('test.start');
-        }
+        };
 
-        $answers = $test->answers;
-
-        return view('frontend.test-completed', compact('answers'));
+        return view('frontend.test-completed');
     }
 }
