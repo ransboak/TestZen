@@ -29,8 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 
     Route::get('/test/start', [TestController::class, 'startTest'])->name('test.start');
     // Route::get('/aptitude-test', [TestController::class, 'startTest'])->name('test.start');
@@ -39,6 +37,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard/questions', [PageController::class, 'adminQuestions'])->name('admin.questions');
     Route::post('/addQuestion', [QuestionController::class, 'addQuestion'])->name('question.store');
+});
+
+
+
 
 
 

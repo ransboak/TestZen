@@ -1,4 +1,128 @@
-<x-guest-layout>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Log In | TestZen</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="TestZen" name="description" />
+        <meta content="Ransboak" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{asset('TestZen.ico')}}">
+
+        <!-- App css -->
+        <link href="{{asset('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+        <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+
+    </head>
+<body class="authentication-bg">
+    <div class="account-pages pt-5 my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="account-card-box">
+                        <div class="card mb-0">
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <div class="my-3">
+                                        <a href="index.html">
+                                            <span><img src="{{asset('TestZen-lg.png')}}" alt="" height="80"></span>
+                                        </a>
+                                    </div>
+                                    <h5 class="text-muted text-uppercase py-3 font-16">Register</h5>
+                                </div>
+
+                                <form method="POST" action="{{ route('register') }}" class="mt-2">
+                                    @csrf
+
+                                    <!-- Name -->
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Enter your name">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Email Address -->
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="email" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Enter your email">
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="password" type="password" name="password" required autocomplete="new-password" placeholder="Enter your password">
+                                        @if ($errors->has('password'))
+                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm your password">
+                                        @if ($errors->has('password_confirmation'))
+                                            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-success btn-block waves-effect waves-light" type="submit"> Register </button>
+                                    </div>
+
+                                    <a href="{{ route('login') }}" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Already registered?</a>
+                                </form>
+
+                                {{-- <div class="text-center mt-4">
+                                    <h5 class="text-muted py-2"><b>Sign up with</b></h5>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-facebook waves-effect font-14 waves-light mt-3">
+                                                <i class="fab fa-facebook-f mr-1"></i> Facebook
+                                            </button>
+
+                                            <button type="button" class="btn btn-twitter waves-effect font-14 waves-light mt-3">
+                                                <i class="fab fa-twitter mr-1"></i> Twitter
+                                            </button>
+
+                                            <button type="button" class="btn btn-googleplus waves-effect font-14 waves-light mt-3">
+                                                <i class="fab fa-google-plus-g mr-1"></i> Google+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-white-50">Already have an account? <a href="pages-login.html" class="text-white ml-1"><b>Sign In</b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+    <!-- Vendor js -->
+    <script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
+
+    <!-- App js -->
+    <script src="{{asset('backend/assets/js/app.min.js')}}"></script>
+</body>
+</html>
+
+{{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +173,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}

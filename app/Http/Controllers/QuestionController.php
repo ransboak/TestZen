@@ -32,7 +32,7 @@ class QuestionController extends Controller
             'type' => $request->input('question_type'),
         ]);
 
-        if (in_array($request->input('question_type'), ['multi-choice', 'multi-selection']) && $request->has('options')) {
+        if (in_array($request->input('question_type'), ['multiple_choice', 'multiple_selection']) && $request->has('options')) {
             foreach ($request->input('options') as $optionText) {
                 if (!empty($optionText)) {
                     Option::create([
