@@ -64,4 +64,38 @@ class TestController extends Controller
 
         return view('frontend.test-completed');
     }
+
+    public function showTest(Test $test)
+    {
+        $questions = Question::with('options')->get();
+
+        // Map each question to include the answer
+        $questionsWithAnswers = $questions->map(function ($question) use ($test) {
+            $answer = $test->answers->firstWhere('question_id', $question->id);
+            $question->answer = $answer ? $answer->answer : null;
+            return $question;
+        });
+
+        return view('frontend.show', compact('test', 'questionsWithAnswers'));
+
+        // $questions = Question::with('options')->get();
+
+        // // Fetch answers related to the test
+        // $answers = $test->answers->pluck('answer', 'question_id');
+
+        // // Pass the test, questions, and answers to the view
+        // return view('frontend.show', compact('test', 'questions', 'answers'));
+        // $questions = Question::with('options')->get();
+
+        // $questionsWithAnswers = $questions->map(function ($question) use ($test) {
+        //     $answer = $test->answers->firstWhere('question_id', $question->id);
+        //     $question->answer = $answer ? $answer->answer : null;
+        //     return $question;
+        // });
+
+        // return view('frontend.show', compact('questionsWithAnswers'));
+        // $test->load('answers.question.options');
+        // return view('frontend.show', compact('test'));
+    }
+
 }

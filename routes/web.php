@@ -31,10 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/test/start', [TestController::class, 'startTest'])->name('test.start');
+    Route::get('/taken-tests', [PageController::class, 'takenTests'])->name('tests.taken');
     // Route::get('/aptitude-test', [TestController::class, 'startTest'])->name('test.start');
     Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.submit');
     Route::get('/test/result', [TestController::class, 'result'])->name('test.result');
-
+    Route::get('/tests/{test}', [TestController::class, 'showTest'])->name('tests.show');
     Route::get('/dashboard/questions', [PageController::class, 'adminQuestions'])->name('admin.questions');
     Route::post('/addQuestion', [QuestionController::class, 'addQuestion'])->name('question.store');
 });

@@ -62,7 +62,7 @@
 
 	<header>
         <div class="container-fluid">
-            <a href="index.html"><img src="{{asset('TestZen-lg.png')}}" alt="" width="300" height="60" class="d-none d-md-inline"><img src="{{asset('TestZen-sm.png')}}" alt="" width="250" height="200" class="d-inline d-md-none"></a>
+            <a href="index.html"><img src="{{asset('TZ-lgg.png')}}" alt=""  height="140" class="d-none d-md-inline"><img src="{{asset('TestZen-sm.png')}}" alt="" width="250" height="200" class="d-inline d-md-none"></a>
             <h1>Aptitude Test</h1>
             <!-- /top_elements -->
         </div>
@@ -301,12 +301,12 @@
                                                     <div class="form-group">
                                                         @if($question->type == 'multiple_choice')
                                                             <label class="container_radio version_2">{{ $option->option_text }}
-                                                                <input type="radio" name="answers[{{ $question->id }}]" value="{{ $option->option_text }}" class="required">
+                                                                <input type="radio" name="answers[{{ $question->id }}]" value="{{ $option->option_text }}">
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         @else
                                                             <label class="container_check version_2">{{ $option->option_text }}
-                                                                <input type="checkbox" name="answers[{{ $question->id }}][]" value="{{ $option->option_text }}" class="required">
+                                                                <input type="checkbox" name="answers[{{ $question->id }}][]" value="{{ $option->option_text }}">
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         @endif
@@ -316,7 +316,7 @@
                                         @elseif($question->type == 'text')
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <input type="text" name="answers[{{ $question->id }}]" class="form-control required">
+                                                    <input type="text" name="answers[{{ $question->id }}]" class="form-control">
                                                 </div>
                                             </div>
                                         @endif
@@ -329,31 +329,31 @@
                                 <h3 class="main_question"><i class="arrow_right"></i>Please fill with your personal data</h3>
                                 <div class="form-group add_top_30">
                                     <label for="name">First and Last Name</label>
-                                    <input type="text" name="name" id="name" class="form-control required" onchange="getVals(this, 'name_field');">
+                                    <input type="text" name="name" id="name" class="form-control " onchange="getVals(this, 'name_field');">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
-                                    <input type="email" name="email" id="email" class="form-control required" onchange="getVals(this, 'email_field');">
+                                    <input type="email" name="email" id="email" class="form-control " onchange="getVals(this, 'email_field');">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" name="phone" id="phone" class="form-control required">
+                                    <input type="text" name="phone" id="phone" class="form-control">
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-4">
                                         <label for="age">Age</label>
                                         <div class="form-group radio_input">
-                                            <input type="text" name="age" id="age" class="form-control required">
+                                            <input type="text" name="age" id="age" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-6 col-8">
                                         <div class="form-group radio_input">
                                             <label class="container_radio mr-3">Male
-                                                <input type="radio" name="gender" value="Male" class="required">
+                                                <input type="radio" name="gender" value="Male">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="container_radio">Female
-                                                <input type="radio" name="gender" value="Female" class="required">
+                                                <input type="radio" name="gender" value="Female">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -466,14 +466,14 @@
 
 	<!-- Wizard script without branch -->
 	<script src="{{asset('frontend/assets/js/wizard.js')}}"></script>
-            <script>
+            {{-- <script>
                 document.addEventListener('DOMContentLoaded', (event) => {
             const form = document.getElementById('wrapped');
             const startTime = new Date("{{ $test->start_time }}").getTime();
             const serverTime = new Date("{{ now() }}").getTime();
             const clientTime = new Date().getTime();
             const offset = serverTime - clientTime;
-            const duration = 3 * 60 * 1000; // 30 minutes in milliseconds
+            const duration = 80 * 60 * 1000; // 30 minutes in milliseconds
 
             function checkAndSubmitForm() {
                 const adjustedClientTime = new Date().getTime() + offset;
@@ -517,5 +517,67 @@
             setInterval(updateTimer, 1000);
             checkAndSubmitForm();
         });
+            </script> --}}
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const form = document.getElementById('wrapped');
+                    const startTime = new Date("{{ $test->start_time }}").getTime();
+                    const serverTime = new Date("{{ now() }}").getTime();
+                    const clientTime = new Date().getTime();
+                    const offset = serverTime - clientTime;
+                    const duration = 97 * 60 * 1000; // 30 minutes in milliseconds
+            
+                    function checkAndSubmitForm() {
+                        const adjustedClientTime = new Date().getTime() + offset;
+                        const timeElapsed = adjustedClientTime - startTime;
+                        if (timeElapsed >= duration) {
+                            form.submit();
+                        }
+                    }
+            
+                    function updateTimer() {
+                        const adjustedClientTime = new Date().getTime() + offset;
+                        const timeElapsed = adjustedClientTime - startTime;
+                        const timeLeft = duration - timeElapsed;
+            
+                        if (timeLeft <= 0) {
+                            form.submit();
+                        } else {
+                            const hours = Math.floor((timeLeft / 1000) / 3600);
+                            const minutes = Math.floor(((timeLeft / 1000) % 3600) / 60);
+                            const seconds = Math.floor((timeLeft / 1000) % 60);
+            
+                            let timeString = '';
+                            if (hours > 0) {
+                                timeString = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                            } else {
+                                timeString = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                            }
+            
+                            const timerElement = document.getElementById('timer');
+                            timerElement.textContent = timeString;
+            
+                            // Change color to red if 30 seconds or less are left
+                            if (timeLeft <= 30 * 1000) {
+                                timerElement.classList.remove('alert-primary');
+                                timerElement.classList.add('alert-danger');
+                            } else {
+                                timerElement.classList.remove('alert-danger');
+                                timerElement.classList.add('alert-primary');
+                            }
+            
+                            // Apply blinking effect if less than 10 seconds are left
+                            if (timeLeft <= 10 * 1000) {
+                                timerElement.classList.add('blink');
+                            } else {
+                                timerElement.classList.remove('blink');
+                            }
+                        }
+                    }
+            
+                    setInterval(updateTimer, 1000);
+                    checkAndSubmitForm();
+                });
             </script>
+            
 </body></html>

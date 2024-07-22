@@ -6,9 +6,9 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Uplon</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Data Tables</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Questions</a></li>
+                        {{-- <li class="breadcrumb-item active">Data Tables</li> --}}
                     </ol>
                 </div>
                 <h4 class="page-title">Questions</h4>

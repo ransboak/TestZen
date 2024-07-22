@@ -17,13 +17,19 @@
                 </li>
 
                 <li>
-                    <a href="calendar.html">
+                    <a href="{{route('admin.questions')}}">
                         <i class="mdi mdi-calendar-month"></i>
-                        <span> Calendar </span>
+                        <span> Questions </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('tests.taken')}}">
+                        <i class="mdi mdi-calendar-month"></i>
+                        <span> Taken Tests </span>
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);">
                         <i class="mdi mdi-flip-horizontal"></i>
                         <span> Layouts </span>
@@ -217,7 +223,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
 
         </div>
