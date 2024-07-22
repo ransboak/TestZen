@@ -1,4 +1,3 @@
-<!-- resources/views/tests/show.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,6 +126,17 @@
         .wizard-buttons .btn {
             min-width: 100px;
         }
+        .test-info {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #777;
+        }
+        .test-info strong {
+            display: block;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -135,6 +145,10 @@
             <img src="{{ asset('TZ-lg.png') }}" alt="Logo" height="80">
         </div>
         <h1 class="text-center mb-4">Test Results</h1>
+        <div class="test-info">
+            <strong>{{ $test->user->name }}</strong>
+            <span>Date Taken: {{ $test->created_at->format('F j, Y, g:i a') }}</span>
+        </div>
         <div id="wrapped">
             <div id="middle-wizard">
                 @php
@@ -147,11 +161,10 @@
                 @foreach ($questionsWithAnswers as $index => $question)
                     @if ($index % $questionsPerStep == 0)
                         <div class="step @if($step == 1) active @endif" data-step="{{ $step }}">
-                            {{-- <h3 class="main_question">Step {{ $step }}</h3> --}}
                     @endif
 
                     <div class="question">
-                        <h3 class="main_question">{{$index + 1}}. {{ $question->question }}</h3>
+                        <h3 class="main_question">{{ $index + 1 }}. {{ $question->question }}</h3>
                         <div class="row">
                             @if($question->type == 'multiple_choice' || $question->type == 'multiple_selection')
                                 <div class="col-lg-12">
