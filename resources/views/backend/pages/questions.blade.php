@@ -1,8 +1,9 @@
 @extends('backend.layouts.main')
+
 @section('content')
     <!-- start page title -->
     <div class="row">
-        <div class="col-12" >
+        <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -15,58 +16,50 @@
             </div>
             <div class="d-flex align-items-center justify-content-center">
                 @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert" >
-                    <button type="button" class="close" data-dismiss="alert"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{session('success')}}
-                </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ session('success') }}
+                    </div>
                 @endif
 
                 @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" >
-                    <button type="button" class="close" data-dismiss="alert"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{session('error')}}
-                </div>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ session('error') }}
+                    </div>
                 @endif
 
                 @if ($errors->any())
                     <ul style="list-style: none">
                         @foreach ($errors->all() as $error)
-                        <li>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" >
-                                <button type="button" class="close" data-dismiss="alert"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                {{$error}}
-
-                            </div>
-                        </li>
+                            <li>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ $error }}
+                                </div>
+                            </li>
                         @endforeach
                     </ul>
                 @endif
-
             </div>
-
         </div>
     </div>
     <!-- end page title -->
 
-
-
     <div class="row">
         <div class="col-12">
             <div class="card-box">
+                <button type="button" class="btn btn-info waves-effect waves-light my-3" data-toggle="modal"
+                    data-target=".bs-example-modal-lg">Add Question</button>
 
-                <button type="button" class="btn btn-info waves-effect waves-light my-3" data-toggle="modal" data-target=".bs-example-modal-lg">Add Question</button>
-
-
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                <!-- DataTable -->
+                <table id="questions-table" class="table table-striped table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -74,37 +67,19 @@
                             <th>Question</th>
                             <th>Type</th>
                             <th>Action</th>
-                            {{-- <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th> --}}
                         </tr>
                     </thead>
-
-
                     <tbody>
-                        @foreach ($questions as $question)
-                        <tr>
-
-                            <td>{{$question->id}}</td>
-                            <td>{{$question->question}}</td>
-                            <td>{{$question->type}}</td>
-
-
-                            <td>61</td>
-                            {{-- <td>2011/04/25</td>
-                            <td>$320,800</td> --}}
-                        </tr>
-                        @endforeach
-
-
+                        <!-- Data will be populated by DataTables -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-     <!--  Modal content for the above example -->
-     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <!--  Modal content for the above example -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,58 +87,27 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    {{-- <form action="{{ route('question.store') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="questionType">Question Type</label>
-                            <select class="form-control" id="questionType" name="question_type">
-                                <option value="text">Text</option>
-                                <option value="multi-choice">Multi Choice</option>
-                                <option value="multi-selection">Multi Selection</option>
-                                <!-- Add more types as needed -->
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Question</label>
-                            <div>
-                                <textarea name="question" required class="form-control" rows="3"></textarea>
-                            </div>
-                        </div>
-
-
-
-                        <div id="optionsContainer" style="display: none;">
-                            <div class="form-group option-field">
-                                <label>Option</label>
-                                <div class="input-group">
-                                    <input type="text" name="options[]" class="form-control" required>
-                                    <button type="button" class="btn btn-danger delete-option">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" id="addOptionButton" class="btn btn-secondary">Add Option</button>
-
-                    </form> --}}
                     <form action="{{ route('question.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="questionType">Question Type</label>
                             <select class="form-control" id="questionType" name="question_type">
-                                <option value="text" {{old('question_type') == 'text' ? 'selected' : ''}}>Text</option>
-                                <option value="multiple_choice" {{old('question_type') == 'multiple_choice' ? 'selected' : ''}}>Multi Choice</option>
-                                <option value="multiple_selection" {{old('question_type') == 'multiple_selection' ? 'selected' : ''}}>Multi Selection</option>
+                                <option value="text" {{ old('question_type') == 'text' ? 'selected' : '' }}>Text</option>
+                                <option value="multiple_choice"
+                                    {{ old('question_type') == 'multiple_choice' ? 'selected' : '' }}>Multi Choice
+                                </option>
+                                <option value="multiple_selection"
+                                    {{ old('question_type') == 'multiple_selection' ? 'selected' : '' }}>Multi Selection
+                                </option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Question</label>
                             <div>
-                                <textarea name="question" required class="form-control" rows="3">{{old('question')}}</textarea>
+                                <textarea name="question" required class="form-control" rows="3">{{ old('question') }}</textarea>
                             </div>
                         </div>
-
 
                         <div id="optionsContainer" style="display: none;">
                             <div class="form-group option-field">
@@ -176,18 +120,102 @@
                         </div>
 
                         <button type="button" id="addOptionButton" class="btn btn-secondary">Add Option</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+        <!-- /.modal -->
+
+        <!-- Edit Modal -->
+<div class="modal fade" id="editQuestionModal" tabindex="-1" role="dialog" aria-labelledby="editQuestionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editQuestionModalLabel">Edit Question</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="editQuestionForm" action="{{ route('question.update') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="id" id="editQuestionId">
+
+                    <div class="form-group">
+                        <label for="editQuestionType">Question Type</label>
+                        <select class="form-control" id="editQuestionType" name="question_type">
+                            <option value="text">Text</option>
+                            <option value="multiple_choice">Multi Choice</option>
+                            <option value="multiple_selection">Multi Selection</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Question</label>
+                        <div>
+                            <textarea name="question" id="editQuestionText" required class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="editOptionsContainer">
+                        <!-- Options will be populated here -->
+                    </div>
+
+                    <button type="button" id="editAddOptionButton" class="btn btn-secondary">Add Option</button>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Add</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
                     </div>
-                    </form>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
 
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    
     <!-- end row -->
 
-    <script>
+    <!-- DataTables Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            $('#questions-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('questions.data') }}',
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'question',
+                        name: 'question'
+                    },
+                    {
+                        data: 'type',
+                        name: 'type'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             const questionTypeSelect = document.getElementById('questionType');
             const optionsContainer = document.getElementById('optionsContainer');
@@ -229,5 +257,111 @@
             // Initialize options visibility
             updateOptions();
         });
-    </script>
+    </script> --}}
+
+<script>
+    $(document).ready(function() {
+        // DataTables initialization
+        $('#questions-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('questions.data') }}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'question', name: 'question' },
+                { data: 'type', name: 'type' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+
+        // Handle edit button click
+        $(document).on('click', '.btn-edit', function() {
+            const questionId = $(this).data('id');
+            $.get('{{ route('questions.edit', '') }}/' + questionId, function(data) {
+                $('#editQuestionId').val(data.id);
+                $('#editQuestionType').val(data.type);
+                $('#editQuestionText').val(data.question);
+
+                // Clear and populate options
+                $('#editOptionsContainer').empty();
+                data.options.forEach(option => {
+                    $('#editOptionsContainer').append(`
+                        <div class="form-group option-field">
+                            <label>Option</label>
+                            <div class="input-group">
+                                <input type="text" name="options[]" class="form-control" value="${option.option_text}" required>
+                                <button type="button" class="btn btn-danger delete-option">Delete</button>
+                            </div>
+                        </div>
+                    `);
+                });
+
+                // Show modal
+                $('#editQuestionModal').modal('show');
+            });
+        });
+
+        // Handle add option button in edit modal
+        $('#editAddOptionButton').click(function() {
+            const optionField = `
+                <div class="form-group option-field">
+                    <label>Option</label>
+                    <div class="input-group">
+                        <input type="text" name="options[]" class="form-control" required>
+                        <button type="button" class="btn btn-danger delete-option">Delete</button>
+                    </div>
+                </div>
+            `;
+            $('#editOptionsContainer').append(optionField);
+        });
+
+        // Handle delete option button click
+        $(document).on('click', '.delete-option', function() {
+            $(this).closest('.option-field').remove();
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+            const questionTypeSelect = document.getElementById('questionType');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const addOptionButton = document.getElementById('addOptionButton');
+
+            // Function to show or hide options based on question type
+            function updateOptions() {
+                const selectedType = questionTypeSelect.value;
+                if (selectedType === 'multiple_choice' || selectedType === 'multiple_selection') {
+                    optionsContainer.style.display = 'block';
+                } else {
+                    optionsContainer.style.display = 'none';
+                }
+            }
+
+            // Function to add a new option field
+            function addOptionField() {
+                const optionField = document.createElement('div');
+                optionField.className = 'form-group option-field';
+                optionField.innerHTML = `
+                    <label>Option</label>
+                    <div class="input-group">
+                        <input type="text" name="options[]" class="form-control" required>
+                        <button type="button" class="btn btn-danger delete-option">Delete</button>
+                    </div>
+                `;
+                optionsContainer.appendChild(optionField);
+
+                // Add event listener for delete button
+                optionField.querySelector('.delete-option').addEventListener('click', function() {
+                    optionsContainer.removeChild(optionField);
+                });
+            }
+
+            // Event listeners
+            questionTypeSelect.addEventListener('change', updateOptions);
+            addOptionButton.addEventListener('click', addOptionField);
+
+            // Initialize options visibility
+            updateOptions();
+        });
+</script>
+
 @endsection

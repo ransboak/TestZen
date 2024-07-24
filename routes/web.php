@@ -39,7 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/questions', [PageController::class, 'adminQuestions'])->name('admin.questions');
     Route::post('/addQuestion', [QuestionController::class, 'addQuestion'])->name('question.store');
 });
-
+Route::get('questions/data', [QuestionController::class, 'data'])->name('questions.data');
+Route::get('/questions/edit/{id}', [QuestionController::class, 'edit'])->name('questions.edit');
+Route::get('questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
+Route::put('/questions/update', [QuestionController::class, 'update'])->name('question.update');
 
 
 

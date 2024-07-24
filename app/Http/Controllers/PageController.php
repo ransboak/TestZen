@@ -10,8 +10,8 @@ class PageController extends Controller
 {
     //
     public function adminQuestions(){
-        $questions = Question::with('options')->latest()->get();
-        return view('backend.pages.questions', compact('questions'));
+        // $questions = Question::with('options')->latest()->get();
+        return view('backend.pages.questions');
     }
     public function aptitudeTest(){
         return view('frontend.aptitude-test');
