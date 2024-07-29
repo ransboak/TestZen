@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/test/result', [TestController::class, 'result'])->name('test.result');
     Route::get('/tests/{test}', [TestController::class, 'showTest'])->name('tests.show');
     Route::get('/dashboard/questions', [PageController::class, 'adminQuestions'])->name('admin.questions');
-    Route::post('/addQuestion', [QuestionController::class, 'addQuestion'])->name('question.store');
+    Route::post('addQuestion', [QuestionController::class, 'addQuestion'])->name('question.store');
 });
 Route::get('questions/data', [QuestionController::class, 'data'])->name('questions.data');
 Route::get('/questions/edit/{id}', [QuestionController::class, 'edit'])->name('questions.edit');
